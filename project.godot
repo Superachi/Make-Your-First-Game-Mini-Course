@@ -27,7 +27,7 @@ window/stretch/scale_mode="integer"
 [layer_names]
 
 2d_physics/layer_1="world"
-2d_physics/layer_2="balloon"
+2d_physics/layer_2="balloon_hurtbox"
 
 [rendering]
 
