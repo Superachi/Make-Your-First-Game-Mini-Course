@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://cf6vi44ffpxhx"]
+
+[ext_resource type="Texture2D" uid="uid://ucdgjrlarvs2" path="res://assets/saw_blade.png" id="1_3aa3k"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_psag8"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_efx67"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_ktfj7"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_qop73"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xj7pg"]
+_data = {
+"RESET": SubResource("Animation_qop73"),
+"spin": SubResource("Animation_ktfj7")
+}
+
+[node name="SawBlade" type="RigidBody2D"]
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_psag8")
+gravity_scale = 0.0
+lock_rotation = true
+linear_velocity = Vector2(45, 0)
+linear_damp_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3aa3k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_efx67")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xj7pg")
+}
+autoplay = "spin"
+speed_scale = 3.0

@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://balloon.gd" id="1_2j6nc"]
 [ext_resource type="Texture2D" uid="uid://cuyuglp4l7len" path="res://assets/balloon.png" id="1_7axca"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5mbwo"]
-radius = 5.0
-height = 12.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5414o"]
+size = Vector2(10, 12)
 
 [node name="Balloon" type="CharacterBody2D"]
+collision_layer = 0
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_2j6nc")
@@ -16,4 +16,4 @@ script = ExtResource("1_2j6nc")
 texture = ExtResource("1_7axca")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_5mbwo")
+shape = SubResource("RectangleShape2D_5414o")
